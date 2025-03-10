@@ -1,6 +1,10 @@
-# VMMR
-Video to Music Moment Retrieval
+# MGSV
+Music Grounding by Short Video
 
-Project page: [https://rucmm.github.io/VMMR/](https://rucmm.github.io/VMMR/)
+Old Project page: [https://rucmm.github.io/VMMR/](https://rucmm.github.io/VMMR/)
+
+Preprint Paper link: [Music Grounding by Short Video]()
+
+Data link: [xxx]()
 
 Code come soon.
