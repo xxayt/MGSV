@@ -69,7 +69,7 @@ After downloading the dataset, organize the data as follows:
 ├── features
 │   └── Kuai_feature
 │       ├── ast_feature2p5/
-│       └── tvit_feature1/
+│       └── vit_feature1/
 └── README.md
 ```
 
