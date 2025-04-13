@@ -52,10 +52,12 @@ pip install -r requirements.txt
 ```
 ## 📦 Data
 
-📥 **Data download**
+#### 📥 Data download
+
 Please refer to the guides from [huggingface](https://huggingface.co/datasets/xxayt/MGSV-EC) for downloading the dataset MGSV-EC.
 
-🗂️ **Dataset organization**
+#### 🗂️ Dataset organization
+
 After downloading the dataset, organize the data as follows:
 ```shell
 .
@@ -74,7 +76,7 @@ After downloading the dataset, organize the data as follows:
 
 ## 🚀 How to Run
 
-**Training**
+#### Training
 
 We provide a demo training script. To train MaDe on a specified GPU, use the following command:
 
@@ -84,7 +86,7 @@ bash scripts/train_kuai_all_feature.sh
 
 Make sure to modify the data path, save path, and set the GPU for training. This process can be done using a single GPU.
 
-**Evaluation**
+#### Evaluation
 
 To evaluate the model on the test set, use the following command:
 
@@ -101,6 +103,7 @@ This implementation relies on resources from [AST](https://github.com/YuanGongND
 
 
 ## 📖 Citation
+
 If you find this work useful, please cite the following paper:
 
 ```bibtex
@@ -114,13 +117,16 @@ If you find this work useful, please cite the following paper:
 
 
 ## 📜 License
+
 License: **CC BY-NC 4.0**
 This work is intended **for non-commercial academic research and educational purposes only**.  
 For commercial licensing or any use beyond research, please contact the authors.
 
-📥 **Raw Vidoes/Music-tracks Access**  
+#### 📥 Raw Vidoes/Music-tracks Access
+
 The raw video and music files are not publicly available due to copyright and privacy constraints.  
 Researchers interested in obtaining the full media content can contact **Kuaishou Technology** at: [wangminquan@kuaishou.com](mailto:wangminquan@kuaishou.com).
 
-📬 **Contact for Issues**
+#### 📬 Contact for Issues
+
 For any questions about this project (e.g., corrupted files or loading errors), please reach out at: [xinzijie@ruc.edu.cn](mailto:xinzijie@ruc.edu.cn)
