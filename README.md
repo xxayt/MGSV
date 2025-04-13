@@ -1,0 +1,125 @@
+<div align="center">
+
+<h1>Music Grounding by Short Video</h1>
+
+<div align="center">
+  <a href="https://arxiv.org/abs/2408.16990"><img src="https://img.shields.io/static/v1?label=Arxiv&message=MGSV&color=red&logo=arxiv"></a> &ensp;
+  <a href="https://huggingface.co/datasets/xxayt/MGSV-EC"><img src="https://img.shields.io/static/v1?label=Dataset&message=MGSV-EC&color=yellow"></a> &ensp;
+  <!-- <a href="https://rucmm.github.io/VMMR/"><img src="https://img.shields.io/static/v1?label=Project Page&message=MGSV&color=purple"></a> &ensp; -->
+</div>
+
+<div>
+    <a href='https://xxayt.github.io/' target='_blank'>Zijie Xin</a><sup>1</sup>&emsp;
+    <a href='' target='_blank'>Minquan Wang</a><sup>2</sup>&emsp;
+    <a href='https://scholar.google.com/citations?user=u7Dqok8AAAAJ
+    ' target='_blank'>Jingyu Liu</a><sup>1</sup>&emsp;
+    <a href='https://scholar.google.com/citations?user=jFQSmp8AAAAJ' target='_blank'>Quan Chen</a><sup>2</sup>&emsp;
+    <a href='' target='_blank'>Ye Ma</a><sup>2</sup>&emsp;
+    <a href='https://scholar.google.com/citations?user=9o5swhQAAAAJ' target='_blank'>Peng Jiang</a><sup>2</sup>&emsp;
+    <a href='http://lixirong.net/' target='_blank'>Xirong Li</a><sup>1†</sup>&emsp;
+</div>
+<div>
+    <sup>1</sup>Renmin University of China&emsp; 
+    <sup>2</sup>Kuaishou Technology&emsp;
+</div>
+
+<img src="assets/teaser.jpg" width="700px"/>
+</div>
+
+<hr>
+
+## Abstract
+> *Adding proper background music helps complete a short video to be shared. Previous research tackles the task by video-to-music retrieval (V2MR), which aims to find the most suitable music track from a collection to match the content of a given query video. In practice, however, music tracks are typically much longer than the query video, necessitating (manual) trimming of the retrieved music to a shorter segment that matches the video duration. In order to bridge the gap between the practical need for music moment localization and V2MR, we propose a new task termed <u>M</u>usic <u>G</u>rounding by <u>S</u>hort <u>V</u>ideo (MGSV). To tackle the new task, we introduce a new benchmark, MGSV-EC, which comprises a diverse set of 53K short videos associated with 35k different music moments from 4k unique music tracks. Furthermore, we develop a new baseline method, MaDe, which performs both video-to-music **ma**tching and music moment **de**tection within a unifed end-to-end deep network. Extensive experiments on MGSV-EC not only highlight the challenging nature of MGSV but also sets MaDe as a strong baseline.*
+
+
+## Introduction
+This repository contains the official implementation of our paper, including training and evaluation scripts for the MGSV task.
+
+## Dependencies and Installation
+We used Anaconda to setup a deep learning workspace that supports PyTorch. Run the following script to install all the required packages.
+
+```shell
+# git clone this repository
+git clone https://github.com/xxayt/MGSV.git
+cd MGSV
+
+# create a new anaconda env
+conda create -n MGSV_env python=3.8
+conda activate MGSV_env
+
+# install torch and dependencies
+pip install -r requirements.txt
+```
+## Data
+
+#### Data download
+Please refer to the guides from [huggingface](https://huggingface.co/datasets/xxayt/MGSV-EC) for downloading the dataset MGSV-EC.
+
+#### Dataset organization
+After downloading the dataset, organize the data as follows:
+```shell
+.
+├── dataset
+│   └── MGSV-EC
+│       ├── train_data.csv
+│       ├── val_data.csv
+│       └── test_data.csv
+├── features
+│   └── Kuai_feature
+│       ├── ast_feature2p5/
+│       └── tvit_feature1/
+└── README.md
+```
+
+
+## How to Run
+
+#### Training
+We provide a demo training script. To train MaDe on a specified GPU, use the following command:
+
+```shell
+bash scripts/train_kuai_all_feature.sh
+```
+
+Make sure to modify the data path, save path, and set the GPU for training. This process can be done using a single GPU.
+
+#### Evaluation
+To evaluate the model on the test set, use the following command:
+
+```shell
+bash scripts/test_kuai_all_feature.sh
+```
+
+Ensure that you update the script with the weight path `--load_uni_model_path` obtained from the training phase.
+
+
+
+## Acknowledgement
+This implementation relies on resources from [AST](https://github.com/YuanGongND/ast), [DETR](https://github.com/facebookresearch/detr), [Moment-DETR](https://github.com/jayleicn/moment_detr), [CLIP4Clip](https://github.com/ArrowLuo/CLIP4Clip), [X-Pool](https://github.com/layer6ai-labs/xpool) and [UT-CMVMR](https://github.com/TencentARC-QQ/UT-CMVMR). We thank the original authors for their excellent contributions and for making their work publicly available.
+
+
+## Citation
+If you find this work useful, please cite the following paper:
+
+```bibtex
+@article{xin2024mgsv,
+  title={Music Grounding by Short Video},
+  author={Xin, Zijie and Wang, Minquan and Liu, Jingyu and Chen, Quan and Ma, Ye and Jiang, Peng and Li, Xirong},
+  journal={arXiv preprint arXiv:2408.16990},
+  year={2024}
+}
+```
+
+
+## License
+License: **CC BY-NC 4.0**
+This work is intended **for non-commercial academic research and educational purposes only**.  
+For commercial licensing or any use beyond research, please contact the authors.
+
+**Raw Vidoes/Music-tracks Access**  
+The raw video and music files are not publicly available due to copyright and privacy constraints.  
+Researchers interested in obtaining the full media content can contact **Kuaishou Technology** at: [wangminquan@kuaishou.com](mailto:wangminquan@kuaishou.com).
+
+**Contact for Issues**
+For any questions about this project (e.g., corrupted files or loading errors), please reach out at: [xinzijie@ruc.edu.cn](mailto:xinzijie@ruc.edu.cn)
+

@@ -1,0 +1,7 @@
+*.pt
+*.pth
+logs/
+*.log
+**/features/*
+**/**__pycache__**/
+**/Uni/
