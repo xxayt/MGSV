@@ -56,9 +56,16 @@ pip install -r requirements.txt
 
 Please refer to the guides from [huggingface](https://huggingface.co/datasets/xxayt/MGSV-EC) for downloading the dataset MGSV-EC.
 
-#### 🗂️ Dataset organization
+#### 📥 Encoder Download (Optional)
 
-After downloading the dataset, organize the data as follows:
+- AST Encoder: Download the AST model `audioset_0.4593.pth` from [Dropbox](https://www.dropbox.com/s/cv4knew8mvbrnvq/audioset_0.4593.pth?dl=1). This model follows the implementation in the [AST repo](https://github.com/YuanGongND/ast) and can be used for audio feature extraction. You can also explore the [![AST Inference Demo on Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YuanGongND/ast/blob/master/colab/AST_Inference_Demo.ipynb) for hands-on usage.
+
+- CLIP Encoder: Download the CLIP model `ViT-B-32.pt` from [this link](https://openaipublic.azureedge.net/clip/models/40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af/ViT-B-32.pt).
+This model follows the implementation in the [CLIP repo](https://github.com/openai/CLIP), specifically [clip.py](https://github.com/openai/CLIP/blob/main/clip/clip.py#L36), for visual feature extraction.
+
+#### 🗂️ Files organization
+
+After downloading the dataset and encoder model, organize the files as follows:
 ```shell
 .
 ├── dataset
@@ -70,6 +77,11 @@ After downloading the dataset, organize the data as follows:
 │   └── Kuai_feature
 │       ├── ast_feature2p5/
 │       └── vit_feature1/
+├── model
+│   ├── ...
+│   └── pretrained_models
+│       ├── audioset_0.4593.pth
+│       └── ViT-B-32.pt
 └── README.md
 ```
 
@@ -102,9 +114,9 @@ Ensure that you update the script with the weight path `--load_uni_model_path` o
 This implementation relies on resources from [AST](https://github.com/YuanGongND/ast), [DETR](https://github.com/facebookresearch/detr), [Moment-DETR](https://github.com/jayleicn/moment_detr), [CLIP4Clip](https://github.com/ArrowLuo/CLIP4Clip), [X-Pool](https://github.com/layer6ai-labs/xpool) and [UT-CMVMR](https://github.com/TencentARC-QQ/UT-CMVMR). We thank the original authors for their excellent contributions and for making their work publicly available.
 
 
-## 📖 Citation
+## ✏️ Citation
 
-If you find this work useful, please cite the following paper:
+If you find this work useful, please consider giving a star ⭐ and citation 📝:
 
 ```bibtex
 @article{xin2024mgsv,
