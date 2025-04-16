@@ -32,7 +32,7 @@
 > *Adding proper background music helps complete a short video to be shared. Previous research tackles the task by video-to-music retrieval (V2MR), which aims to find the most suitable music track from a collection to match the content of a given query video. In practice, however, music tracks are typically much longer than the query video, necessitating (manual) trimming of the retrieved music to a shorter segment that matches the video duration. In order to bridge the gap between the practical need for music moment localization and V2MR, we propose a new task termed <u>M</u>usic <u>G</u>rounding by <u>S</u>hort <u>V</u>ideo (MGSV). To tackle the new task, we introduce a new benchmark, MGSV-EC, which comprises a diverse set of 53K short videos associated with 35k different music moments from 4k unique music tracks. Furthermore, we develop a new baseline method, MaDe, which performs both video-to-music **ma**tching and music moment **de**tection within a unifed end-to-end deep network. Extensive experiments on MGSV-EC not only highlight the challenging nature of MGSV but also sets MaDe as a strong baseline.*
 
 
-## 📝 Introduction
+## 👀 Introduction
 This repository contains the official implementation of our paper, including training and evaluation scripts for the MGSV task.
 
 ## 🔧 Dependencies and Installation
@@ -116,7 +116,7 @@ This implementation relies on resources from [AST](https://github.com/YuanGongND
 
 ## ✏️ Citation
 
-If you find this work useful, please consider giving a star ⭐ and citation 📝:
+If you find this work useful, please consider cite this paper:
 
 ```bibtex
 @article{xin2024mgsv,

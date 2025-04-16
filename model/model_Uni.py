@@ -253,9 +253,8 @@ class Uni_model(Base_model):
             retrieval_loss = single_loss * self.args.dual_single_loss_weight
         elif self.args.vmr_loss == "dual_single_loss_fuse" and "XA" in self.args.vmr_fusion:
             dual_sim = cal_distance(video_feats, music_feats)
-            # dual_loss, _, _ = InfoNCELoss(dual_sim, self.logit_scale, audio_id=None,
-            #                             args=self.args, is_train=is_train)
-            dual_loss = CLIPLoss(dual_sim, self.logit_scale)
+            dual_loss, _, _ = InfoNCELoss(dual_sim, self.logit_scale, audio_id=None, args=self.args, is_train=is_train)
+            # dual_loss = CLIPLoss(dual_sim, self.logit_scale)
             single_sim = torch.zeros(video_feats.shape[0], music_feats.shape[0]).to(self.device)
             bs_music_sim = sim_matrix_music_pooling(video_feats, music_feats_pooled)
             single_sim += bs_music_sim

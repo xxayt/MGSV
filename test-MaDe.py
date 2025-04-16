@@ -143,6 +143,7 @@ def parse_option():
 
     args = parser.parse_args()
     # data
+    args.train_data = args.train_data + "_uni"
     args.test_data = args.test_data + "_uni"
     args.max_snippet_num = int(args.max_m_duration / args.stride)
     # model
