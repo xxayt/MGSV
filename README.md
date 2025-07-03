@@ -1,11 +1,14 @@
 <div align="center">
 
-<h1>Music Grounding by Short Video</h1>
+<h1>Music Grounding by Short Video (ICCV 2025)</h1>
 
 <div align="center">
-  <a href="https://arxiv.org/abs/2408.16990"><img src="https://img.shields.io/static/v1?label=Arxiv&message=MGSV&color=red&logo=arxiv"></a> &ensp;
-  <a href="https://huggingface.co/datasets/xxayt/MGSV-EC"><img src="https://img.shields.io/static/v1?label=Dataset&message=MGSV-EC&color=yellow"></a> &ensp;
-  <!-- <a href="https://rucmm.github.io/VMMR/"><img src="https://img.shields.io/static/v1?label=Project Page&message=MGSV&color=purple"></a> &ensp; -->
+  <a href="https://arxiv.org/abs/2408.16990"><img src="https://img.shields.io/static/v1?label=arXiv&message=Paper&color=red&logo=arxiv"></a> &ensp;
+  <a href="https://huggingface.co/datasets/xxayt/MGSV-EC"><img src="https://img.shields.io/static/v1?label=🤗 HuggingFace&message=Dataset&color=yellow"></a> &ensp;
+  <a href="https://rucmm.github.io/VMMR/"><img src="https://img.shields.io/static/v1?label=Project&message=Page&color=green"></a> &ensp;
+  <a href="https://github.com/xxayt/MGSV">
+  <img src="https://img.shields.io/github/stars/xxayt/MGSV?style=social"></a> &ensp;
+ &ensp;
 </div>
 
 <div>
@@ -13,20 +16,31 @@
     <a href='' target='_blank'>Minquan Wang</a><sup>2</sup>&emsp;
     <a href='https://scholar.google.com/citations?user=u7Dqok8AAAAJ
     ' target='_blank'>Jingyu Liu</a><sup>1</sup>&emsp;
-    <a href='https://scholar.google.com/citations?user=jFQSmp8AAAAJ' target='_blank'>Quan Chen</a><sup>2</sup>&emsp;
     <a href='' target='_blank'>Ye Ma</a><sup>2</sup>&emsp;
+    <a href='https://scholar.google.com/citations?user=jFQSmp8AAAAJ' target='_blank'>Quan Chen</a><sup>2</sup>&emsp;
     <a href='https://scholar.google.com/citations?user=9o5swhQAAAAJ' target='_blank'>Peng Jiang</a><sup>2</sup>&emsp;
-    <a href='http://lixirong.net/' target='_blank'>Xirong Li</a><sup>1†</sup>&emsp;
+    <a href='http://lixirong.net/' target='_blank'>Xirong Li</a><sup>1,📧</sup>&emsp;
 </div>
 <div>
-    <sup>1</sup>Renmin University of China&emsp; 
-    <sup>2</sup>Kuaishou Technology&emsp;
+    📧 Corresponding author
+</div>
+<div>
+    <sup>1</sup> Renmin University of China&emsp; 
+    <sup>2</sup> Kuaishou Technology&emsp;
 </div>
 
 <img src="assets/teaser.jpg" width="900px"/>
 </div>
 
 <hr>
+
+
+## Changelog
+- **[2025.07.03]** Release Project page!
+- **[2025.06.26]** 🔥 The paper is accepted by ICCV 2025!
+- **[2025.04.13]** Release code!
+- **[2025.03.10]** Release Paper!
+
 
 ## 📄 Abstract
 > *Adding proper background music helps complete a short video to be shared. Previous research tackles the task by video-to-music retrieval (V2MR), which aims to find the most suitable music track from a collection to match the content of a given query video. In practice, however, music tracks are typically much longer than the query video, necessitating (manual) trimming of the retrieved music to a shorter segment that matches the video duration. In order to bridge the gap between the practical need for music moment localization and V2MR, we propose a new task termed <u>M</u>usic <u>G</u>rounding by <u>S</u>hort <u>V</u>ideo (MGSV). To tackle the new task, we introduce a new benchmark, MGSV-EC, which comprises a diverse set of 53K short videos associated with 35k different music moments from 4k unique music tracks. Furthermore, we develop a new baseline method, MaDe, which performs both video-to-music **ma**tching and music moment **de**tection within a unifed end-to-end deep network. Extensive experiments on MGSV-EC not only highlight the challenging nature of MGSV but also sets MaDe as a strong baseline.*
