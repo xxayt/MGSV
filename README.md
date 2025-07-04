@@ -144,8 +144,7 @@ If you find this work useful, please consider cite this paper:
 
 ## 📜 License
 
-
-The *MGSV-EC* dataset are under **[CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/)** license, see [DATA-LICENSE](./DATA-LICENSE). All the code are under **[MIT](https://opensource.org/licenses/MIT)** license, see [LICENSE](./LICENSE). For commercial licensing or any use beyond research, please contact the authors.
+The *MGSV-EC* dataset is under **[CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/)** license, see [DATA-LICENSE](./DATA-LICENSE). All the codes are under **[MIT](https://opensource.org/licenses/MIT)** license, see [LICENSE](./LICENSE). For commercial licensing or any use beyond research, please contact the authors.
 
 #### 📥 Raw Vidoes/Music-tracks Access
 
