@@ -29,7 +29,7 @@
     <sup>2</sup> Kuaishou Technology&emsp;
 </div>
 
-<img src="assets/teaser.jpg" width="900px"/>
+<img src="assets/teaser.png" width="900px"/>
 </div>
 
 <hr>
