@@ -133,7 +133,7 @@ This implementation relies on resources from [AST](https://github.com/YuanGongND
 If you find this work useful, please consider cite this paper:
 
 ```bibtex
-@inproceedings{xin2024mgsv,
+@inproceedings{xin2025mgsv,
   title={Music Grounding by Short Video},
   author={Xin, Zijie and Wang, Minquan and Liu, Jingyu and Chen, Quan and Ma, Ye and Jiang, Peng and Li, Xirong},
   booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
