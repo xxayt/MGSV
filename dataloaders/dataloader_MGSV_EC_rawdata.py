@@ -38,7 +38,27 @@ class MGSV_EC_DataLoader(Dataset):
         return len(self.csv_data)
     
     # Padding 0 for max_v_frames
-    def get_clip_frame(self, video_id, frame_path, video_start_time, video_end_time, max_v_frames=30):
+    def get_clip_frame(self, video_id, frame_path, video_start_time, video_end_time, max_v_frames=50):
+        '''
+        Loads video frames from the specified directory, selects a subset of frames based on the given time range,
+        and pads the frames to a fixed number of frames (`max_v_frames`). It applies a transformation to each image to prepare
+        them for model input.
+
+        Args:
+            video_id (str): The unique identifier for the video.
+            frame_path (str): The path to the directory containing the video frames (as JPEG images).
+            video_start_time (float): The start time (in seconds) for the frame selection.
+            video_end_time (float): The end time (in seconds) for the frame selection.
+            max_v_frames (int): The maximum number of frames to be selected from the video. If there are fewer frames, they will be padded to this number. Default is 50.
+
+        Returns:
+            video (Tensor): A tensor containing the transformed frames. Shape is [max_v_frames, 3, 224, 224].
+            video_mask (Tensor): A tensor representing the presence of valid frames (1 for valid frames, 0 for padded frames). Shape is [max_v_frames].
+
+        Example:
+            video, video_mask = self.get_clip_frame(video_id, frame_path, video_start_time, video_end_time, max_v_frames=self.args.max_v_frames)
+        '''
+
         transform = _transform_clip(self.image_resolution)
         path_frame_num = len(os.listdir(frame_path))  # 0 ~ path_frame_num-1
         # choose frames
@@ -72,11 +92,32 @@ class MGSV_EC_DataLoader(Dataset):
         return video, video_mask  # [max_v_frames, 3, 224, 224], [max_v_frames]
 
     # Sliding Window with Overlap
-    def get_ast_rawaudio(self, music_path, stride=2.0, filter=4.0, padding=0, max_m_duration=300, mel_bins=128, target_length=1024):
+    def get_ast_rawaudio(self, music_path, stride=2.5, filter=10.0, padding=0, max_m_duration=240, mel_bins=128, target_length=1024):
+        '''
+        Loads an audio file, resamples it to a fixed sample rate, and splits it into overlapping segments using a sliding window.
+        Each segment is then transformed into a Mel-spectrogram feature with a fixed target length.
+
+        Args:
+            music_path (str): Path to the audio file (e.g., WAV, MP3).
+            stride (float): The step size (in seconds) for the sliding window. Default is 2.5 seconds.
+            filter (float): The window size for each segment (in seconds). Default is 10.0 seconds.
+            padding (float): Amount of padding (in seconds) to add before and after each segment. Default is 0 seconds.
+            max_m_duration (float): Maximum duration (in seconds) of the audio. If the audio is shorter, it will be padded. Default is 240 seconds.
+            mel_bins (int): The number of Mel filter banks to use for feature extraction. Default is 128.
+            target_length (int): The target length of each Mel-spectrogram feature after padding or trimming. Default is 1024 (approx. 10.26 seconds).
+
+        Returns:
+            audio (Tensor): A tensor containing the Mel-spectrogram features of the audio segments. Shape is [max_snippet_num, target_length, mel_bins].
+            audio_mask (Tensor): A tensor representing the presence of valid segments (1 for valid, 0 for padded). Shape is [max_snippet_num].
+        
+        Example:
+            audio, audio_mask = self.get_ast_rawaudio(music_path, stride=self.args.stride, filter=self.args.filter, padding=self.args.padding, max_m_duration=self.args.max_m_duration)
+        '''
+        
         waveform, origin_sample_rate = torchaudio.load(music_path)
         # fixed sample rate
         target_sample_rate = 16000
-        if target_sample_rate != origin_sample_rate:  # assert target_sample_rate == 16000, f'input audio sampling rate must be 16kHz'
+        if target_sample_rate != origin_sample_rate:
             waveform = torchaudio.functional.resample(waveform, orig_freq=origin_sample_rate, new_freq=target_sample_rate)
         # fixed audio length
         m_duration = waveform.shape[1] / target_sample_rate
@@ -103,7 +144,7 @@ class MGSV_EC_DataLoader(Dataset):
             fbank = torchaudio.compliance.kaldi.fbank(
                 waveform_snippet, htk_compat=True, sample_frequency=target_sample_rate, use_energy=False,
                 window_type='hanning', num_mel_bins=mel_bins, dither=0.0, frame_shift=10)  # 默认 frame_length=25. final dim(1024)=1+(duration*16000-400)/160, 其中400=25ms*16000/1000, 160=10ms*16000/1000
-            # fixed target length: 1024 samples = 10.26s
+            # fixed target length by AST: 1024 samples = 10.26s
             if target_length > fbank.shape[0]:  # equ to: 10.26s > filter
                 m = torch.nn.ZeroPad2d((0, 0, 0, target_length - fbank.shape[0]))
                 fbank = m(fbank)
