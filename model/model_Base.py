@@ -542,7 +542,7 @@ class Base_model(nn.Module):
         return local_feats, local_masks
 
     def forward_video_encoder_feature(self, frame_feats=None, frame_masks=None, video_ids=None):
-        # 和 forward_video_encoder_ViT 的不同：默认已完整抽好 frame_frozen_feature_path 中的特征
+        # Difference from `forward_video_encoder_ViT`: assumes pre-extracted features from frame_frozen_feature_path
         '''
         Inputs:
             frame_feats: [bs, max_v_frames, 512]
@@ -581,7 +581,7 @@ class Base_model(nn.Module):
         return frame_feats, video_feats, frame_masks
 
     def forward_audio_encoder_feature(self, segment_feats=None, segment_masks=None, music_ids=None):
-        # 和forward_audio_encoder_AST的不同：默认已完整抽好music_frozen_feature_path中的特征
+        # Difference from `forward_audio_encoder_AST`: assumes pre-extracted features from music_frozen_feature_path
         '''
         Inputs:
             segment_feats: [bs, max_snippet_num, 768]
