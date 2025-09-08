@@ -293,7 +293,7 @@ class Base_model(nn.Module):
         self.audio_attention_seqlen = 300
         self.encoder_attention_hidden_dim = 1024
         self.cross_hidden_dim = 1024
-        self.r_enc = 0.8
+        self.r_enc = 0.8  # follow https://github.com/TencentARC-QQ/UT-CMVMR/blob/0f951f8aa4e9d643aefc20f9c925c47098cf775d/model_pretrained.py#L345
         self.init_method = "xavier"  # "kaiming" / "xavier"
         self.act_after_proj = QuickGELU()
         # whether share transformer or projection
