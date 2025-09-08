@@ -69,14 +69,14 @@ def parse_option():
     parser.add_argument('--agg_module', type=str, default="transf", help="agg module type", choices=["None", "transf", "mlp"])
     parser.add_argument('--downup_is_share', type=int, default=0)
     parser.add_argument('--downup_dim', type=int, default=64)
-    # VMR Pooling
+    # VMR (video-to-music retrieval/matching) Pooling
     parser.add_argument('--vmr_fusion', type=str, default="XA-music", help="fusion type, XA is cross-attn, XA_video_music is cross-attn with video and music",
                         choices=["NO", "XA", "XA-video", "XA-music", "XA-video-music", "XA-music-video"])  # last two options are same
     parser.add_argument('--vmr_loss', type=str, default="dual_single_loss_fuse", help="dual / single tower loss", 
                         choices=["dual", "single", "dual_single", "dual_single_oneloss", "dual_single_sim_fuse", "dual_single_loss_fuse", "dual_single_feature_fuse"])
     parser.add_argument('--dual_single_loss_weight', type=float, default=1.0)
     parser.add_argument('--fusion_mask', type=int, default=1)
-    # MML Fusion
+    # MMD (music moment location/detection) Fusion
     parser.add_argument('--mml_fusion', type=str, default="CA", choices=["CA", "concat", "add"])
     # Music-DETR
     parser.add_argument('--mml_localization', type=str, default="detr", help="mml localization type", choices=["detr", "regression"])
@@ -84,7 +84,7 @@ def parse_option():
     parser.add_argument('--moment_query_type', type=str, default="video", choices=["video", "xpool", "music", "random", "zero"])
     parser.add_argument('--span_loss_type', type=str, default="l1", help="span loss type", choices=["l1", "ce"])
     parser.add_argument('--fb_label', type=str, default="01", choices=["01", "10"])
-    # detr
+    # DETR
     parser.add_argument('--detr_hidden_dim', type=int, default=256)
     parser.add_argument('--detr_dropout', type=float, default=0.1)
     parser.add_argument('--detr_nheads', type=int, default=8)
