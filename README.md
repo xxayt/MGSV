@@ -5,7 +5,7 @@
 <div align="center">
   <a href="https://arxiv.org/abs/2408.16990"><img src="https://img.shields.io/static/v1?label=arXiv&message=Paper&color=red&logo=arxiv"></a> &ensp;
   <a href="https://huggingface.co/datasets/xxayt/MGSV-EC"><img src="https://img.shields.io/static/v1?label=%F0%9F%A4%97%20Hugging%20Face&message=Dataset&color=yellow"></a> &ensp;
-  <a href="https://rucmm.github.io/VMMR/"><img src="https://img.shields.io/static/v1?label=Project&message=Page&color=green"></a> &ensp;
+  <a href="https://rucmm.github.io/MGSV/"><img src="https://img.shields.io/static/v1?label=Project&message=Page&color=green"></a> &ensp;
   <a href="https://github.com/xxayt/MGSV">
   <img src="https://img.shields.io/github/stars/xxayt/MGSV?style=social"></a> &ensp;
  &ensp;
